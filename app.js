@@ -8,29 +8,6 @@ class Product {
 
 class UI {
   addProduct(product) {
-    // let a = 2
-    // $('#addModal').show();
-    // document.getElementById('saveAdd').addEventListener('click', (e) =>{
-    //   let clck = e.target.id;
-    //   if (clck == 'saveAdd') {
-    //     a++ ;
-    //     clck = false;
-    //     const productList = document.getElementById("product-list");
-    //     const element = document.createElement("div");
-    //     element.innerHTML = `<ul class="list-unstyled d-flex flex-row justify-content-between py-2 px-4 align-items-center bg-info bg-opacity-25 fs-6 rounded-2 border-info">
-    //     <li class="">Item: ${product.item}</li>
-    //     <li class="">Price: ${product.price}</li>
-    //     <li class="">Year: ${product.year}</li>
-    //     <button class="btn btn-info btn-sm rounded-3 my-2 px-4 fs-6" onclick="deleteButton()">Delete</button>
-    //     </ul> `;
-    //     $('#addModal').hide();
-    //     return productList.appendChild(element);
-    //   }
-    //   else {
-    //     $('#addModal').hide();
-    //   }
-    // });
-
     const productList = document.getElementById("product-list");
     const element = document.createElement("div");
 
@@ -41,25 +18,14 @@ class UI {
         <button class="btn btn-info btn-sm rounded-3 my-2 px-4 fs-6" onclick="deleteButton()">Delete</button>
         </ul> `;
     productList.appendChild(element);
-
     formId.reset();
     this.showMessage("add");
-    // $('#addModal').show();
   }
 
   deleteProduct(product) {
-    $("#delModal").show();
-    document.getElementById("delModal").addEventListener("click", (e) => {
-      const clck = e.target.id;
-      if (clck == "saveDel") {
         product.innerHTML = "";
-        $("#delModal").hide();
         this.showMessage("del");
-      } else {
-        $("#delModal").hide();
       }
-    });
-  }
 
   showMessage(info) {
     const target = document.getElementById("message-bar");
@@ -73,6 +39,7 @@ class UI {
     setTimeout(() => (target.innerHTML = ""), 3000);
   }
 }
+
 const formId = document.getElementById("product-form");
 formId.addEventListener("submit", (e) => {
   const item = document.getElementById("item").value;
@@ -89,7 +56,7 @@ formId.addEventListener("submit", (e) => {
 function deleteButton() {
   document.getElementById("product-list").addEventListener("click", (e) => {
     const ui = new UI();
-    const product = e.target.parentElement.parentElement;
+    let product = e.target.parentElement.parentElement;
     ui.deleteProduct(product);
   });
 }
